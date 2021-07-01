@@ -856,6 +856,34 @@
           <ImageLoaded condition="contains any">System.ni.dll;System.Core.ni.dll</ImageLoaded>
         </Rule>
         <ImageLoaded name="technique_id=T1197,technique_name=BITS" condition="end with">bitsproxy.dll</ImageLoaded>
+        <Rule groupRelation="and">
+          <OriginalFileName name="technique_id=T1055,technique_name=Process Injection" condition="is">clr.dll</OriginalFileName>
+          <Image condition="excludes">C:\Windows\Microsoft.NET\</Image>
+        </Rule>
+        <Rule groupRelation="and">
+          <OriginalFileName name="technique_id=T1055,technique_name=Process Injection" condition="is">clrjit.dll</OriginalFileName>
+          <Image condition="excludes">C:\Windows\Microsoft.NET\</Image>
+        </Rule>
+        <Rule groupRelation="and">
+          <OriginalFileName name="technique_id=T1055,technique_name=Process Injection" condition="is">mscoreei.dll</OriginalFileName>
+          <Image condition="excludes">C:\Windows\Microsoft.NET\</Image>
+        </Rule>
+        <Rule groupRelation="and">
+          <OriginalFileName name="technique_id=T1055,technique_name=Process Injection" condition="is">mscoree.dll</OriginalFileName>
+          <Image condition="excludes">C:\Windows\Microsoft.NET\</Image>
+        </Rule>
+        <Rule groupRelation="and">
+          <OriginalFileName name="technique_id=T1055,technique_name=Process Injection" condition="is">mscoreeis.dll</OriginalFileName>
+          <Image condition="excludes">C:\Windows\Microsoft.NET\</Image>
+        </Rule>
+        <Rule groupRelation="and">
+          <OriginalFileName name="technique_id=T1055,technique_name=Process Injection" condition="is">mscorlib.dll</OriginalFileName>
+          <Image condition="excludes">C:\Windows\Microsoft.NET\</Image>
+        </Rule>
+        <Rule groupRelation="and">
+          <OriginalFileName name="technique_id=T1055,technique_name=Process Injection" condition="is">mscorlib.ni.dll</OriginalFileName>
+          <Image condition="excludes">C:\Windows\Microsoft.NET\</Image>
+        </Rule>
         <ImageLoaded name="technique_id=T1047,technique_name=Windows Scheduled Tasks" condition="end with">mstask.dll</ImageLoaded>
         <ImageLoaded name="technique_id=T1064,technique_name=Windows Scripting Host Component" condition="end with">wshom.ocx</ImageLoaded>
         <OriginalFileName condition="is">scrrun.dll</OriginalFileName>
@@ -906,6 +934,10 @@
           <Image condition="contains all">C:\Program Files;\Microsoft Office\root\Office</Image>
           <OriginalFileName condition="is">VBEUI.DLL</OriginalFileName>
         </Rule>
+        <Rule groupRelation="and" name="technique_id=T1137.001,technique_name=Office Application Startup - Office Template Macros">
+          <Image condition="contains all">C:\Program Files;\Microsoft Office\root\Office</Image>
+          <OriginalFileName condition="is">OUTLVBA.DLL</OriginalFileName>
+        </Rule>
         <Image name="technique_id=T1137,technique_name=Office Application Startup" condition="end with">VSTOInstaller.exe</Image>
         <Rule groupRelation="and">
           <Image name="technique_id=T1047,technique_name=Windows Management Instrumentation" condition="contains all">C:\Program Files;\Microsoft Office\root\Office</Image>
@@ -918,6 +950,7 @@
         <ImageLoaded name="technique_id=T1059.001,technique_name=PowerShell" condition="end with">Microsoft.PowerShell.Commands.Utility.dll</ImageLoaded>
         <ImageLoaded name="technique_id=T1059.001,technique_name=PowerShell" condition="end with">Microsoft.PowerShell.ConsoleHost.dll</ImageLoaded>
         <ImageLoaded name="technique_id=T1059.001,technique_name=PowerShell" condition="end with">Microsoft.PowerShell.Security.dll</ImageLoaded>
+        <ImageLoaded name="technique_id=1210,technique_name=Exploitation of Remote Services" condition="begin with">C:\Windows\System32\spool\drivers\</ImageLoaded>
         <OriginalFileName name="technique_id=T1112,technique_name=Modify Registry" condition="is">regsvc.dll</OriginalFileName>
         <Rule groupRelation="and">
           <Image condition="end with">rundll32.exe</Image>
@@ -1440,6 +1473,10 @@
         <Image condition="is">C:\Program Files\Common Files\McAfee\AVSolution\mcshield.exe</Image>
         <Image condition="is">C:\Program Files\ownCloud\owncloud.exe</Image>
         <Image condition="is">C:\Program Files (x86)\ownCloud\owncloud.exe</Image>
+        <Rule groupRelation="and">
+          <Image condition="image">svchost.exe</Image>
+          <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks</TargetObject>
+        </Rule>
         <Image condition="begin with">C:\Program Files\SentinelOne\Sentinel Agent</Image>
         <Image condition="is">System</Image>
         <Rule groupRelation="and">
@@ -1515,6 +1552,10 @@
         <TargetFilename condition="end with">.dll</TargetFilename>
         <TargetFilename condition="end with">.exe</TargetFilename>
         <TargetFilename condition="end with">.hta</TargetFilename>
+        <Rule name="technique_id=T1089,technique_name=Drive-by Compromise" groupRelation="and">
+          <TargetFilename condition="end with">:Zone.Identifier</TargetFilename>
+          <Contents condition="contains any">blob:;about:internet</Contents>
+        </Rule>
         <TargetFilename condition="end with">.lnk</TargetFilename>
         <TargetFilename condition="contains">Content.Outlook</TargetFilename>
         <TargetFilename name="technique_id=T1059.001,technique_name=PowerShell" condition="end with">.ps1</TargetFilename>
